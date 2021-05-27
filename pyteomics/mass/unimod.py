@@ -243,9 +243,9 @@ class AminoAcid(Base, HasFullNameMixin):
     num_C = Column(Integer)
     num_N = Column(Integer)
     num_S = Column(Integer)
-    full_name = Column(Unicode(25), index=True)
-    one_letter = Column(Unicode(10), index=True)
-    three_letter = Column(Unicode(10), index=True)
+    full_name = Column(Unicode(25), index=True, unique=True)
+    one_letter = Column(Unicode(10), index=True, unique=True)
+    three_letter = Column(Unicode(10), index=True, unique=True)
 
 
 class Classification(Base):
@@ -300,7 +300,7 @@ class Brick(Base, HasFullNameMixin):
         return inst
 
     id = Column(Integer, primary_key=True)
-    brick = Column(Unicode(64), index=True)
+    brick = Column(Unicode(64), index=True, unique=True)
     full_name = Column(Unicode(128), index=True)
 
     elements = relationship('BrickToElement')
@@ -453,7 +453,7 @@ class Element(Base, HasFullNameMixin):
     average_mass = Column(Numeric(12, 6, asdecimal=False))
     monoisotopic_mass = Column(Numeric(12, 6, asdecimal=False))
     full_name = Column(Unicode(64), index=True)
-    element = Column(Unicode(16), index=True)
+    element = Column(Unicode(16), index=True, unique=True)
 
 
 @has_composition('_composition')
