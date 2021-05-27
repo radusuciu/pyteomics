@@ -629,7 +629,7 @@ class Crossreference(Base):
     id = Column(Integer, primary_key=True)
     source_id = Column(Integer, ForeignKey(CrossreferenceSource.id), index=True)
     source = relationship(CrossreferenceSource, uselist=False)
-    url = Column(Unicode(128))
+    url = Column(UnicodeText)
     modification_id = Column(Integer, ForeignKey(Modification.id), index=True)
     text = Column(UnicodeText)
 
